@@ -1,4 +1,4 @@
-@import '@angular/material/prebuilt-themes/hle-solucoes.css';
+@import './hle-solucoes.css';
 @font-face {
     font-family: 'Product Sans';
     font-style: normal;
