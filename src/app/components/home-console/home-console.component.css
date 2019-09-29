@@ -1,0 +1,26 @@
+mat-card {
+    margin-bottom: 24px;
+}
+
+mat-form-field {
+    width: 100%;
+    font-size: 14px;
+}
+
+#start-date {
+    width: 48.5%;
+}
+
+#end-date {
+    margin-left: 3%;
+    width: 48.5%;
+}
+
+table {
+    width: 100%;
+}
+
+.column-to-right {
+    text-align: right;
+    justify-content: flex-end;
+}

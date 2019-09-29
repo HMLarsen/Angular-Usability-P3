@@ -1,0 +1,39 @@
+mat-sidenav {
+    background: #878787;
+    width: 252px;
+    border: 0;
+}
+
+mat-sidenav-content section {
+    padding-left: 100px;
+    padding-top: 24px;
+    padding-right: 100px;
+}
+
+mat-sidenav ul {
+    padding: 0;
+    margin: 0;
+}
+
+mat-sidenav ul li {
+    text-align: center;
+    line-height: 60px;
+    height: 60px;
+    width: 100%;
+    display: flex;
+}
+
+mat-sidenav ul li:hover {
+    background: #6c6c6c;
+    transition: 150ms;
+}
+
+.item-active {
+    background: #007a72 !important;
+}
+
+mat-sidenav ul li a {
+    text-decoration: none;
+    color: white;
+    width: 100%;
+}

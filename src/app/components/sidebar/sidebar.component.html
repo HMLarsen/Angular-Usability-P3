@@ -1,0 +1,21 @@
+<mat-sidenav-container>
+    <mat-sidenav mode="side" opened>
+        <ul>
+            <li routerLinkActive="item-active">
+                <a routerLink="/home-console">Home</a>
+            </li>
+            <li routerLinkActive="item-active">
+                <a routerLink="/#">Perfil</a>
+            </li>
+            <li routerLinkActive="item-active">
+                <a routerLink="/#">Conta</a>
+            </li>
+        </ul>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <section>
+            <router-outlet></router-outlet>
+        </section>
+        <app-footer></app-footer>
+    </mat-sidenav-content>
+</mat-sidenav-container>
