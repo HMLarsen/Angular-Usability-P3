@@ -23,6 +23,7 @@ mat-toolbar a img {
 
 #search-bar button {
     margin-left: 3px;
+    height: 100%;
 }
 
 #search-bar input {

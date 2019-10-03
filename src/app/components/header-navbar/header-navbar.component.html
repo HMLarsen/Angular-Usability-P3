@@ -3,9 +3,9 @@
         <img src="../../../assets/logo-tiny.png">
     </a>
     <div id="search-bar">
-        <button mat-icon-button color="primary">
+        <button mat-icon-button color="primary" (click)="searchClicked()">
             <mat-icon>search</mat-icon>
         </button>
-        <input type="text" placeholder="Pesquisar">
+        <input type="text" placeholder="Pesquisar" id="search-input">
     </div>
 </mat-toolbar>

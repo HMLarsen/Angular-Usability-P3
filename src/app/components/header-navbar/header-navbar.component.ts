@@ -12,4 +12,8 @@ export class HeaderNavbarComponent implements OnInit {
   ngOnInit() {
   }
 
+  searchClicked() {
+    document.getElementById('search-input').focus();
+  }
+
 }
