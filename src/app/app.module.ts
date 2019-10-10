@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -23,10 +24,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // locale
 import { MAT_DATE_LOCALE } from '@angular/material';
 import { getPortuguesePaginatorIntl } from './ptbr-paginator-intl';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { ContaComponent } from './components/conta/conta.component';
+import { AmigosComponent } from './components/amigos/amigos.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,10 @@ import { getPortuguesePaginatorIntl } from './ptbr-paginator-intl';
     HeaderNavbarComponent,
     SidebarComponent,
     HomeConsoleComponent,
-    FooterComponent
+    FooterComponent,
+    PerfilComponent,
+    ContaComponent,
+    AmigosComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +58,9 @@ import { getPortuguesePaginatorIntl } from './ptbr-paginator-intl';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSnackBarModule,
     AppRoutingModule
   ],
   providers: [

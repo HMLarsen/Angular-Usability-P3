@@ -2,6 +2,10 @@ mat-card {
     margin-bottom: 24px;
 }
 
+#card-promocoes {
+    margin-bottom: 0;
+}
+
 mat-form-field {
     width: 100%;
     font-size: 14px;

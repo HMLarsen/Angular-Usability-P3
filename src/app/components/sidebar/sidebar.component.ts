@@ -12,4 +12,13 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
   }
 
+  socialSpan() {
+    const element = document.getElementById('social-item');
+    if (element.style.display === 'flex') {
+      element.style.display = 'none';
+    } else {
+      element.style.display = 'flex';
+    }
+  }
+
 }

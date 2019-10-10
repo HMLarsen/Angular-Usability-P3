@@ -2,13 +2,22 @@
     <mat-sidenav mode="side" opened>
         <ul>
             <li routerLinkActive="item-active">
-                <a routerLink="/home-console">Home</a>
+                <a routerLink="/home">Home</a>
             </li>
             <li routerLinkActive="item-active">
-                <a routerLink="/#">Perfil</a>
+                <a routerLink="/perfil">Perfil</a>
             </li>
             <li routerLinkActive="item-active">
-                <a routerLink="/#">Conta</a>
+                <a routerLink="/conta">Conta</a>
+            </li>
+            <li (click)="socialSpan()">
+                <span>
+                    <a>Social</a>
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </span>
+            </li>
+            <li routerLinkActive="item-active" id="social-item">
+                <a routerLink="/amigos">Amigos</a>
             </li>
         </ul>
     </mat-sidenav>
