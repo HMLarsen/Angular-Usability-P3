@@ -20,6 +20,10 @@
                 <a routerLink="/amigos">Amigos</a>
             </li>
         </ul>
+        <div *ngIf="authenticationService.currentUserValue">
+            <button mat-stroked-button (click)="logout()">Sair</button>
+            {{authenticationService.currentUserValue.nome}}
+        </div>
     </mat-sidenav>
     <mat-sidenav-content>
         <section>

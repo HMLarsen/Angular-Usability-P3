@@ -27,11 +27,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // locale
-import { MAT_DATE_LOCALE } from '@angular/material';
+import { MAT_DATE_LOCALE, MatCheckbox, MatCheckboxModule } from '@angular/material';
 import { getPortuguesePaginatorIntl } from './ptbr-paginator-intl';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ContaComponent } from './components/conta/conta.component';
 import { AmigosComponent } from './components/amigos/amigos.component';
+import { LoginComponent } from './components/login/login.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { fakeBackendProvider } from './components/helpers/fake-backend';
+import { ErrorInterceptor } from './components/helpers/error.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +47,8 @@ import { AmigosComponent } from './components/amigos/amigos.component';
     FooterComponent,
     PerfilComponent,
     ContaComponent,
-    AmigosComponent
+    AmigosComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -61,11 +67,15 @@ import { AmigosComponent } from './components/amigos/amigos.component';
     FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    AppRoutingModule
+    MatCheckboxModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: MAT_DATE_LOCALE, useValue: 'pt-br' },
-    { provide: MatPaginatorIntl, useValue: getPortuguesePaginatorIntl() }
+    { provide: MatPaginatorIntl, useValue: getPortuguesePaginatorIntl() },
+    fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })
