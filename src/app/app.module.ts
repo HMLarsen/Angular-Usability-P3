@@ -27,7 +27,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // locale
-import { MAT_DATE_LOCALE, MatCheckbox, MatCheckboxModule } from '@angular/material';
+import { MAT_DATE_LOCALE, MatCheckboxModule } from '@angular/material';
 import { getPortuguesePaginatorIntl } from './ptbr-paginator-intl';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ContaComponent } from './components/conta/conta.component';
@@ -36,6 +36,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { fakeBackendProvider } from './components/helpers/fake-backend';
 import { ErrorInterceptor } from './components/helpers/error.interceptor';
+import { MomentDatePipe } from './components/home-console/moment.pipe';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ErrorInterceptor } from './components/helpers/error.interceptor';
     PerfilComponent,
     ContaComponent,
     AmigosComponent,
-    LoginComponent
+    LoginComponent,
+    MomentDatePipe
   ],
   imports: [
     BrowserModule,

@@ -70,11 +70,11 @@
                 </ng-container>
                 <ng-container matColumnDef="dataInicial">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header arrowPosition='before'>Data início</th>
-                    <td mat-cell class="column-to-right" *matCellDef="let element"> {{ element.dataInicial }} </td>
+                    <td mat-cell class="column-to-right" *matCellDef="let element"> {{ element.dataInicial | momentDatePipe: 'DD/MM/YYYY' }} </td>
                 </ng-container>
                 <ng-container matColumnDef="dataFinal">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header arrowPosition='before'>Data fim</th>
-                    <td mat-cell class="column-to-right" *matCellDef="let element"> {{ element.dataFinal }}
+                    <td mat-cell class="column-to-right" *matCellDef="let element"> {{ element.dataFinal | momentDatePipe: 'DD/MM/YYYY' }}
                     </td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
