@@ -4,7 +4,9 @@ import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
 import { User } from 'src/app/user/users';
-const users: User[] = [{ id: 1, login: 'test', senha: 'test', nome: 'Test' }];
+const users: User[] = [
+    { login: 'teste', senha: '123' }
+];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -14,7 +16,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         // wrap in delayed observable to simulate server api call
         return of(null)
             .pipe(mergeMap(handleRoute))
-            .pipe(materialize()) // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
+            .pipe(materialize())
             .pipe(delay(500))
             .pipe(dematerialize());
 
@@ -35,23 +37,25 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         function authenticate() {
             const { username, password } = body;
             const user = users.find(x => x.login === username && x.senha === password);
-            if (!user) return error('Usuário ou senha incorretos');
+            if (!user) {
+                return error('Usuário ou senha incorretos');
+            }
             return ok({
-                id: user.id,
-                login: user.login,
-                nome: user.nome
-            })
+                login: user.login
+            });
         }
 
         function getUsers() {
-            if (!isLoggedIn()) return unauthorized();
+            if (!isLoggedIn()) {
+                return unauthorized();
+            }
             return ok(users);
         }
 
         // helper functions
 
         function ok(body?) {
-            return of(new HttpResponse({ status: 200, body }))
+            return of(new HttpResponse({ status: 200, body }));
         }
 
         function error(message) {

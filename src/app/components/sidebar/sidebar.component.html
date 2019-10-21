@@ -20,15 +20,15 @@
                 <a routerLink="/amigos">Amigos</a>
             </li>
         </ul>
-        <div *ngIf="authenticationService.currentUserValue">
-            <button mat-stroked-button (click)="logout()">Sair</button>
-            {{authenticationService.currentUserValue.nome}}
-        </div>
     </mat-sidenav>
     <mat-sidenav-content>
         <section>
             <router-outlet></router-outlet>
         </section>
+        <button id="logout-button" (click)="logout()" *ngIf="authenticationService.currentUserValue" mat-fab
+            color="primary" matTooltip="Sair da sessão">
+            <mat-icon>logout</mat-icon>
+        </button>
         <app-footer></app-footer>
     </mat-sidenav-content>
 </mat-sidenav-container>

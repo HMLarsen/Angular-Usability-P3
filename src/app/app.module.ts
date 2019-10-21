@@ -27,7 +27,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // locale
-import { MAT_DATE_LOCALE, MatCheckboxModule } from '@angular/material';
+import { MAT_DATE_LOCALE, MatCheckboxModule, MatTooltipModule } from '@angular/material';
 import { getPortuguesePaginatorIntl } from './ptbr-paginator-intl';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ContaComponent } from './components/conta/conta.component';
@@ -70,6 +70,7 @@ import { MomentDatePipe } from './components/home-console/moment.pipe';
     ReactiveFormsModule,
     MatSnackBarModule,
     MatCheckboxModule,
+    MatTooltipModule,
     AppRoutingModule,
     HttpClientModule
   ],
