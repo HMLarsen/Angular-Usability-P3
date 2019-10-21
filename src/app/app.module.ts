@@ -34,8 +34,8 @@ import { ContaComponent } from './components/conta/conta.component';
 import { AmigosComponent } from './components/amigos/amigos.component';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { fakeBackendProvider } from './components/helpers/fake-backend';
-import { ErrorInterceptor } from './components/helpers/error.interceptor';
+import { fakeBackendProvider } from './helpers/fake-backend';
+import { ErrorInterceptor } from './helpers/error.interceptor';
 import { MomentDatePipe } from './components/home-console/moment.pipe';
 
 
