@@ -1,17 +1,31 @@
 <mat-card>
     <mat-card-title>Bem vindo!</mat-card-title>
+    <mat-card-subtitle id='label'>Cadastre-se para receber nossas ofertas relâmpagos
+        ou como estabelecimento alimentício você pode criar
+        suas próprias promoções.
+    </mat-card-subtitle>
     <mat-card-content>
         <form [formGroup]="loginForm">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" hideRequiredMarker>
                 <mat-label>Login</mat-label>
                 <input matInput formControlName="Login" class="form-control" required>
             </mat-form-field>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" hideRequiredMarker>
                 <mat-label>Senha</mat-label>
-                <input matInput type="password" formControlName="Senha" class="form-control" required>
+                <input matInput showHideInput id="mysecretpassword" type="password" formControlName="Senha" class="form-control" required>
+                <i matSuffix class="material-icons"  
+                   showHideTrigger="mysecretpassword"
+                   [showHideStatus]="{ materialIcon: true, id: 'mysecretpassword' }"></i>
             </mat-form-field>
-            <mat-label>Esqueceu sua senha?</mat-label>
-            <mat-checkbox color="primary">Lembrar senha</mat-checkbox>
+            <mat-card-actions>
+                <mat-label>Esqueceu sua senha?</mat-label>
+            </mat-card-actions>
+            <mat-card-actions>
+                <mat-checkbox color="primary" formControlName="LembrarSenha">Lembrar senha</mat-checkbox>
+            </mat-card-actions>
+            <mat-card-actions id='criarConta'>
+                <mat-label>Criar conta</mat-label>
+            </mat-card-actions>
             <mat-card-actions align="end">
                 <button mat-stroked-button color="primary" (click)="onSubmit()">Entrar</button>
             </mat-card-actions>

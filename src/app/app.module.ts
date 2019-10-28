@@ -37,7 +37,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { MomentDatePipe } from './components/home-console/moment.pipe';
-
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+import { MomentModule } from 'angular2-moment';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,10 @@ import { MomentDatePipe } from './components/home-console/moment.pipe';
     MatCheckboxModule,
     MatTooltipModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ShowHidePasswordModule,
+    NgIdleKeepaliveModule.forRoot(),
+    MomentModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

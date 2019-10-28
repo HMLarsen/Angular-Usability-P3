@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { AuthService } from 'src/app/auth.service';
 
-@Component({ templateUrl: 'login.component.html' })
+
+@Component({ templateUrl: 'login.component.html', styleUrls: ['login.component.css']})
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
@@ -21,13 +21,15 @@ export class LoginComponent implements OnInit {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
             this.router.navigate(['/']);
-        }
+        } else
+            localStorage.setItem('mostrarMenu', 'false');
     }
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
-            Login: ['', Validators.required],
-            Senha: ['', Validators.required]
+            Login: [localStorage.getItem('ultimoLogin') || '', Validators.required],
+            Senha: [localStorage.getItem('ultimaSenha') || '', Validators.required],
+            LembrarSenha: ['']
         });
     }
 
@@ -43,7 +45,7 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.authenticationService.login(this.f.Login.value, this.f.Senha.value)
+        this.authenticationService.login(this.f.Login.value, this.f.Senha.value, this.f.LembrarSenha.value)
             .pipe(first())
             .subscribe(
                 data => {

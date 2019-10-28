@@ -1,30 +1,34 @@
 mat-card {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    margin: auto;
+    width: 400px;
 }
 
-#card-promocoes {
-    margin-bottom: 0;
+#label {
+    font-size: 14px;
+    color: gray;
+    text-align: justify;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+#criarConta {
+    color:#007a72;
+}
+
+#showPassword {
+    height: 5px;
+    width: 5px;
 }
 
 mat-form-field {
-    width: 100%;
     font-size: 14px;
+    padding-left: 20px;
+    width: 359px;
 }
 
-#start-date {
-    width: 48.5%;
-}
-
-#end-date {
-    margin-left: 3%;
-    width: 48.5%;
-}
-
-table {
-    width: 100%;
-}
-
-.column-to-right {
-    text-align: right;
-    justify-content: flex-end;
+mat-card-actions {
+    width: 340;
+    margin-left: 20px;
+    font-size: 14px;
 }

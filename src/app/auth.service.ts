@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
 import { User } from 'src/app/user/users';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -23,11 +23,20 @@ export class AuthService {
         return this.currentUserSubject.value;
     }
 
-    login(username: string, password: string) {
+    login(username: string, password: string, remindPassword: boolean) {
         return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { username, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(user));
+                sessionStorage.setItem('currentUser', JSON.stringify(user));
+                if (remindPassword) {
+                    localStorage.setItem('ultimoLogin', username);
+                    localStorage.setItem('ultimaSenha', password);
+                }
+                else {
+                    localStorage.removeItem('ultimoLogin');    
+                    localStorage.removeItem('ultimaSenha');  
+                }
+                localStorage.setItem('mostrarMenu', 'true');
                 this.currentUserSubject.next(user);
                 return user;
             }));
@@ -35,7 +44,8 @@ export class AuthService {
 
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
+        localStorage.setItem('mostrarMenu', 'false');
+        sessionStorage.removeItem('currentUser');
         localStorage.setItem('lastItem', this.route.url);
         this.currentUserSubject.next(null);
     }
