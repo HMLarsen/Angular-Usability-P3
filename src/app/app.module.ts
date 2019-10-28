@@ -27,7 +27,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // locale
-import { MAT_DATE_LOCALE, MatCheckboxModule, MatTooltipModule } from '@angular/material';
+import { MAT_DATE_LOCALE, MatCheckboxModule, MatTooltipModule, MatDialogModule } from '@angular/material';
 import { getPortuguesePaginatorIntl } from './ptbr-paginator-intl';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ContaComponent } from './components/conta/conta.component';
@@ -40,6 +40,7 @@ import { MomentDatePipe } from './components/home-console/moment.pipe';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { MomentModule } from 'angular2-moment';
+import { DialogIncorrectUserComponent } from './components/dialog-incorrect-user/dialog-incorrect-user.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { MomentModule } from 'angular2-moment';
     ContaComponent,
     AmigosComponent,
     LoginComponent,
-    MomentDatePipe
+    MomentDatePipe,
+    DialogIncorrectUserComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +78,7 @@ import { MomentModule } from 'angular2-moment';
     AppRoutingModule,
     HttpClientModule,
     ShowHidePasswordModule,
+    MatDialogModule,
     NgIdleKeepaliveModule.forRoot(),
     MomentModule
   ],
@@ -85,6 +88,9 @@ import { MomentModule } from 'angular2-moment';
     { provide: MatPaginatorIntl, useValue: getPortuguesePaginatorIntl() },
     fakeBackendProvider
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DialogIncorrectUserComponent
+  ]
 })
 export class AppModule { }

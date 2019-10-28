@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth.service';
+import { DialogIncorrectUserComponent } from '../dialog-incorrect-user/dialog-incorrect-user.component';
+import { MatDialog } from '@angular/material';
 
 
 @Component({ templateUrl: 'login.component.html', styleUrls: ['login.component.css'] })
@@ -14,9 +16,9 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthService
+        private authenticationService: AuthService,
+        private dialog: MatDialog
     ) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
@@ -57,7 +59,12 @@ export class LoginComponent implements OnInit {
                 error => {
                     this.error = error;
                     this.loading = false;
-                    alert(error);
+                    this.openDialog();
                 });
     }
+
+    openDialog(): void {
+        this.dialog.open(DialogIncorrectUserComponent);
+    }
+
 }

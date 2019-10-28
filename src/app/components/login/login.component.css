@@ -4,30 +4,40 @@ mat-card {
     width: 400px;
 }
 
-#label {
-    font-size: 14px;
-    color: gray;
+mat-card-subtitle {
     text-align: justify;
-    padding-left: 20px;
+}
+
+#options {
+    display: inline-block;
+}
+
+#forgotPassword {
     margin-bottom: 20px;
 }
 
-#criarConta {
-    color:#007a72;
+#forgotPassword a {
+    color: #007a72;
+    text-decoration: none;
+}
+
+#createAccount {
+    color: #007a72;
+    text-decoration: none;
+}
+
+#buttonLogin {
+    float: right;
 }
 
 mat-form-field {
-    font-size: 14px;
-    padding-left: 20px;
-    width: 359px;
-}
-
-mat-card-actions {
-    width: 340;
-    margin-left: 20px;
-    font-size: 14px;
+    display: inline;
 }
 
 #buttonPassword {
     cursor: pointer;
+}
+
+mat-card-actions {
+    margin-bottom: 0;
 }

@@ -31,10 +31,9 @@ export class AuthService {
                 if (remindPassword) {
                     localStorage.setItem('ultimoLogin', username);
                     localStorage.setItem('ultimaSenha', password);
-                }
-                else {
-                    localStorage.removeItem('ultimoLogin');    
-                    localStorage.removeItem('ultimaSenha');  
+                } else {
+                    localStorage.removeItem('ultimoLogin');
+                    localStorage.removeItem('ultimaSenha');
                 }
                 this.currentUserSubject.next(user);
                 return user;
