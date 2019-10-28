@@ -5,8 +5,8 @@ Implementação de um protótipo para exemplificar a usabilidade em um sistema.
 
 # Teste
 Usuário e senha para teste:
-<br>Login: teste
-Senha: 123
+<br><b>teste</b>
+<b>123</b>
 
 # Autores
 Hugo Marcel Larsen
