@@ -38,8 +38,7 @@ import { fakeBackendProvider } from './helpers/fake-backend';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { MomentDatePipe } from './components/home-console/moment.pipe';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
-import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
-import { MomentModule } from 'angular2-moment';
+import { UserIdleModule } from 'angular-user-idle';
 
 @NgModule({
   declarations: [
@@ -76,8 +75,7 @@ import { MomentModule } from 'angular2-moment';
     AppRoutingModule,
     HttpClientModule,
     ShowHidePasswordModule,
-    NgIdleKeepaliveModule.forRoot(),
-    MomentModule
+    UserIdleModule.forRoot({idle: 5, timeout: 5, ping: 0})
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

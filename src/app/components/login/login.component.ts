@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth.service';
+import { UserIdleService } from 'angular-user-idle';
 
 
 @Component({ templateUrl: 'login.component.html', styleUrls: ['login.component.css'] })
@@ -14,9 +15,9 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthService
+        private authenticationService: AuthService,
+        private userIdle: UserIdleService
     ) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
@@ -30,6 +31,8 @@ export class LoginComponent implements OnInit {
             Senha: [localStorage.getItem('ultimaSenha') || '', Validators.required],
             LembrarSenha: ['']
         });
+        this.userIdle.onTimerStart().subscribe(count => console.log(count));
+        this.userIdle.onTimeout().subscribe(() => console.log('Time is up!'));
     }
 
     // convenience getter for easy access to form fields
