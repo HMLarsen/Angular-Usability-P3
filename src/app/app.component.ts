@@ -40,11 +40,8 @@ export class AppComponent {
         this.timedOut = false;
     }
 
-    public get mostrarMenuValue(): boolean {
-    if (localStorage.getItem('mostrarMenu') == 'true')
-        return true;
-    else
-        return false;
+    usuarioLogado() {
+        return this.authService.usuarioLogado();
     }
 }
 

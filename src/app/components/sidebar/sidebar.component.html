@@ -1,5 +1,5 @@
 <mat-sidenav-container>
-    <mat-sidenav mode="side" opened *ngIf="appModule.mostrarMenuValue">
+    <mat-sidenav mode="side" opened *ngIf="usuarioLogado()">
         <ul>
             <li routerLinkActive="item-active">
                 <a routerLink="/home">Home</a>

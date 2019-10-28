@@ -12,8 +12,7 @@ export class SidebarComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authenticationService: AuthService,
-    private appModule : AppComponent) {
+    private authenticationService: AuthService) {
   }
 
   ngOnInit() {
@@ -31,6 +30,10 @@ export class SidebarComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
+  }
+
+  usuarioLogado() {
+    return this.authenticationService.usuarioLogado();
   }
 
 }

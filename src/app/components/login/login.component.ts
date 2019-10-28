@@ -5,7 +5,7 @@ import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth.service';
 
 
-@Component({ templateUrl: 'login.component.html', styleUrls: ['login.component.css']})
+@Component({ templateUrl: 'login.component.html', styleUrls: ['login.component.css'] })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
@@ -21,8 +21,7 @@ export class LoginComponent implements OnInit {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
             this.router.navigate(['/']);
-        } else
-            localStorage.setItem('mostrarMenu', 'false');
+        }
     }
 
     ngOnInit() {

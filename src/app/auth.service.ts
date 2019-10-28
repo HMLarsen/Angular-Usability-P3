@@ -15,7 +15,7 @@ export class AuthService {
     constructor(
         private http: HttpClient,
         private route: Router) {
-        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(sessionStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
     }
 
@@ -36,7 +36,6 @@ export class AuthService {
                     localStorage.removeItem('ultimoLogin');    
                     localStorage.removeItem('ultimaSenha');  
                 }
-                localStorage.setItem('mostrarMenu', 'true');
                 this.currentUserSubject.next(user);
                 return user;
             }));
@@ -44,9 +43,13 @@ export class AuthService {
 
     logout() {
         // remove user from local storage to log user out
-        localStorage.setItem('mostrarMenu', 'false');
         sessionStorage.removeItem('currentUser');
         localStorage.setItem('lastItem', this.route.url);
         this.currentUserSubject.next(null);
     }
+
+    usuarioLogado() {
+        return this.currentUserSubject.value;
+    }
+
 }

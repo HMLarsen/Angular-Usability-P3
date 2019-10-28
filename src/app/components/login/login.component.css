@@ -16,11 +16,6 @@ mat-card {
     color:#007a72;
 }
 
-#showPassword {
-    height: 5px;
-    width: 5px;
-}
-
 mat-form-field {
     font-size: 14px;
     padding-left: 20px;
@@ -31,4 +26,8 @@ mat-card-actions {
     width: 340;
     margin-left: 20px;
     font-size: 14px;
+}
+
+#buttonPassword {
+    cursor: pointer;
 }
