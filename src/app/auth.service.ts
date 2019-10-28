@@ -33,8 +33,7 @@ export class AuthService {
                 if (remindPassword) {
                     localStorage.setItem('ultimoLogin', username);
                     localStorage.setItem('ultimaSenha', password);
-                }
-                else {
+                } else {
                     localStorage.removeItem('ultimoLogin');
                     localStorage.removeItem('ultimaSenha');
                 }

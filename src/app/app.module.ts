@@ -27,7 +27,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // locale
-import { MAT_DATE_LOCALE, MatCheckboxModule, MatTooltipModule } from '@angular/material';
+import { MAT_DATE_LOCALE, MatCheckboxModule, MatTooltipModule, MatDialogModule } from '@angular/material';
 import { getPortuguesePaginatorIntl } from './ptbr-paginator-intl';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ContaComponent } from './components/conta/conta.component';
@@ -39,6 +39,9 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
 import { MomentDatePipe } from './components/home-console/moment.pipe';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { UserIdleModule } from 'angular-user-idle';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+import { MomentModule } from 'angular2-moment';
+import { DialogIncorrectUserComponent } from './components/dialog-incorrect-user/dialog-incorrect-user.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,8 @@ import { UserIdleModule } from 'angular-user-idle';
     ContaComponent,
     AmigosComponent,
     LoginComponent,
-    MomentDatePipe
+    MomentDatePipe,
+    DialogIncorrectUserComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +79,10 @@ import { UserIdleModule } from 'angular-user-idle';
     AppRoutingModule,
     HttpClientModule,
     ShowHidePasswordModule,
-    UserIdleModule.forRoot({idle: 5, timeout: 5, ping: 0})
+    UserIdleModule.forRoot({idle: 5, timeout: 5, ping: 0}),
+    MatDialogModule,
+    NgIdleKeepaliveModule.forRoot(),
+    MomentModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
@@ -83,6 +90,9 @@ import { UserIdleModule } from 'angular-user-idle';
     { provide: MatPaginatorIntl, useValue: getPortuguesePaginatorIntl() },
     fakeBackendProvider
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DialogIncorrectUserComponent
+  ]
 })
 export class AppModule { }
