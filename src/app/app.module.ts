@@ -38,10 +38,9 @@ import { fakeBackendProvider } from './helpers/fake-backend';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { MomentDatePipe } from './components/home-console/moment.pipe';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
-import { UserIdleModule } from 'angular-user-idle';
-import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { MomentModule } from 'angular2-moment';
 import { DialogIncorrectUserComponent } from './components/dialog-incorrect-user/dialog-incorrect-user.component';
+import { DialogSessionOutComponent } from './components/dialog-session-out/dialog-session-out.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +54,8 @@ import { DialogIncorrectUserComponent } from './components/dialog-incorrect-user
     AmigosComponent,
     LoginComponent,
     MomentDatePipe,
-    DialogIncorrectUserComponent
+    DialogIncorrectUserComponent,
+    DialogSessionOutComponent
   ],
   imports: [
     BrowserModule,
@@ -79,9 +79,7 @@ import { DialogIncorrectUserComponent } from './components/dialog-incorrect-user
     AppRoutingModule,
     HttpClientModule,
     ShowHidePasswordModule,
-    UserIdleModule.forRoot({idle: 5, timeout: 5, ping: 0}),
     MatDialogModule,
-    NgIdleKeepaliveModule.forRoot(),
     MomentModule
   ],
   providers: [
@@ -92,7 +90,8 @@ import { DialogIncorrectUserComponent } from './components/dialog-incorrect-user
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    DialogIncorrectUserComponent
+    DialogIncorrectUserComponent,
+    DialogSessionOutComponent
   ]
 })
 export class AppModule { }

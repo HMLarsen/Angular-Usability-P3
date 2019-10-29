@@ -6,19 +6,23 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { User } from 'src/app/user/users';
 import { Router } from '@angular/router';
-import { UserIdleService } from 'angular-user-idle';
+import { MatDialog } from '@angular/material';
+import { DialogIncorrectUserComponent } from './components/dialog-incorrect-user/dialog-incorrect-user.component';
+import { DialogSessionOutComponent } from './components/dialog-session-out/dialog-session-out.component';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
+    private timer;
 
-    constructor(private http: HttpClient,
+    constructor(
+        private router: Router,
+        private http: HttpClient,
         private route: Router,
-        private userIdle: UserIdleService) {
+        private dialog: MatDialog) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(sessionStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
-        
     }
 
     public get currentUserValue(): User {
@@ -37,38 +41,25 @@ export class AuthService {
                     localStorage.removeItem('ultimoLogin');
                     localStorage.removeItem('ultimaSenha');
                 }
-                console.log("aidede");
-                this.startWatching();
                 this.currentUserSubject.next(user);
+
+                this.timer = setTimeout(() => {
+                    this.dialog.open(DialogSessionOutComponent);
+                    this.logout();
+                }, 300000);
                 return user;
             }));
     }
 
     logout() {
-        // remove user from local storage to log user out
+        clearTimeout(this.timer);
         sessionStorage.removeItem('currentUser');
         localStorage.setItem('lastItem', this.route.url);
         this.currentUserSubject.next(null);
-        this.stopWatching();
+        this.router.navigate(['/login']);
     }
 
     usuarioLogado() {
         return this.currentUserSubject.value;
-    }
-
-    stop() {
-        this.userIdle.stopTimer();
-    }
-
-    stopWatching() {
-        this.userIdle.stopWatching();
-    }
-
-    startWatching() {
-        this.userIdle.startWatching();
-    }
-
-    restart() {
-        this.userIdle.resetTimer();
     }
 }

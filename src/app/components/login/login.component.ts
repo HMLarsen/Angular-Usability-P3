@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth.service';
-import { UserIdleService } from 'angular-user-idle';
 import { DialogIncorrectUserComponent } from '../dialog-incorrect-user/dialog-incorrect-user.component';
 import { MatDialog } from '@angular/material';
 
@@ -19,7 +18,6 @@ export class LoginComponent implements OnInit {
         private formBuilder: FormBuilder,
         private router: Router,
         private authenticationService: AuthService,
-        private userIdle: UserIdleService,
         private dialog: MatDialog
     ) {
         // redirect to home if already logged in
@@ -34,8 +32,6 @@ export class LoginComponent implements OnInit {
             Senha: [localStorage.getItem('ultimaSenha') || '', Validators.required],
             LembrarSenha: ['']
         });
-        this.userIdle.onTimerStart().subscribe(count => console.log(count));
-        this.userIdle.onTimeout().subscribe(() => console.log('Time is up!'));
     }
 
     // convenience getter for easy access to form fields

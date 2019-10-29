@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
-import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
-import { Keepalive } from '@ng-idle/keepalive';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -11,11 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-    timedOut = false;
-    lastPing?: Date = null;
-    
-    constructor(private authService: AuthService, 
-                private router: Router) {}
+    constructor(private authService: AuthService) { }
 
     usuarioLogado() {
         return this.authService.usuarioLogado();
