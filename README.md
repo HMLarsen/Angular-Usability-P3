@@ -1,13 +1,12 @@
-# Prog3Trab2
+# Angular-Usability-P3
 
-Trabalho realizado na disciplina Programação III (trabalho 2).<br>
-Implementação de um protótipo para exemplificar a usabilidade em um sistema.
+Implementation of a prototype to exemplify usability in a system. Developed for Programming 3 class at FURB.
 
-# Teste
-Usuário e senha para teste:<br>
+## Tests
+User & password:<br>
 <b>teste</b><br>
 <b>123</b>
 
-# Autores
-Hugo Marcel Larsen<br>
-Lucas Vanderlinde
+Authors
+> [Hugo Marcel Larsen](https://github.com/HMLarsen) <br>
+> [Lucas Vanderlinde](https://github.com/LucasVander) <br>
